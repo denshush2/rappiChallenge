@@ -1,36 +1,20 @@
-# challenge
+# Rappi Challenge
 
-## Project setup
+![N|Solid](http://blogs.eltiempo.com/digital-jumper/wp-content/uploads/sites/483/2017/07/FOTO-WEB-RAPPI-810x410.png)
+# What we have?
+
+  - Vue.js **2.5.17**
+  - vuetify **1.2.0**
+  - Sass
+  - Jest
+  
+
+## Instalation
+
+### Vue
+Use npm for first command because I have some troubles with yarn add global, but it's ok.
 ```
+npm install -g @vue/cli
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your end-to-end tests
-```
-yarn run test:e2e
-```
-
-### Run your unit tests
-```
-yarn run test:unit
+yarn serve
 ```
