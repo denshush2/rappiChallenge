@@ -1,0 +1,12 @@
+<section class="NavBar">
+<v-toolbar
+      app
+    >
+      <v-toolbar-side-icon @click.stop="toggleToolBarSwitch"></v-toolbar-side-icon>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click.stop="toggleCartSwitch">
+        <v-icon>fas fa-shopping-cart</v-icon>
+      </v-btn>
+    </v-toolbar>
+</section>

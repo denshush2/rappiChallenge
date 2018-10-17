@@ -1,0 +1,57 @@
+<section class="ToolBar">
+    <v-navigation-drawer
+      persistent
+      v-model="toggleToolBar"
+      enable-resize-watcher
+      fixed
+      app
+    >
+    <!-- <div></div> -->
+    	<v-list>
+	        <v-list-tile>
+	        	<v-list-tile-action>
+	            	<v-icon>fa fa-home</v-icon>
+	          	</v-list-tile-action>
+	          	<v-list-tile-title>Home</v-list-tile-title>
+	        </v-list-tile>
+	        <v-list-group
+	    		prepend-icon="fa fa-home"
+	    		no-action
+	    		v-for="category in menu"
+			>
+				<v-list-tile slot="activator"
+					@click="clickSection(category)"
+				>
+			      	<v-list-tile-title>{{category.name}}</v-list-tile-title>
+			    </v-list-tile>
+			    <ToolBarSection
+		        	v-for="level in category.sublevels"
+		        	:key="level.name"
+		        	:level="level"
+		        /> 
+			</v-list-group>
+	           	
+	        <!-- <v-list-group
+	          prepend-icon="fa fa-home"
+	          value="true"
+	        >
+	          	<v-list-tile slot="activator">
+	            	<v-list-tile-title>asdasdsad</v-list-tile-title>
+	          	</v-list-tile>
+	          	<v-list-group
+	            	no-action
+	            	sub-group
+	          	>
+	            	<v-list-tile slot="activator">
+		              	<v-list-tile-title>asdasd</v-list-tile-title>
+		            </v-list-tile>
+		            <v-list-tile
+		              	@click=""
+		            >
+		            	<v-list-tile-title v-text="asdas"></v-list-tile-title>
+	            	</v-list-tile>
+	          	</v-list-group>
+	        </v-list-group> -->
+      	</v-list> 
+    </v-navigation-drawer>
+</section>

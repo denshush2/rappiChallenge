@@ -1,0 +1,11 @@
+<section class="Main">
+  <NavBar 
+  	:toggleToolBar="toggleToolBar" 
+  	v-on:toggleToolBarSwitch="toggleToolBarSwitch($event)"
+  	:toggleCart="toggleCart" 
+  	v-on:toggleCartSwitch="toggleCartSwitch($event)"
+  />
+  <Cart v-bind:toggleCart="toggleCart"/>
+  <ToolBar v-bind:toggleToolBar="toggleToolBar"/>
+  <router-view></router-view>
+</section>

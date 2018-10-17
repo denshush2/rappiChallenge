@@ -1,0 +1,28 @@
+<section class="ToolBarSection">
+	<v-list-group
+		v-if="level.sublevels"
+	    sub-group
+	>
+		<v-list-tile slot="activator" @click="clickSection()">
+	      	<v-list-tile-title>{{level.name}}</v-list-tile-title>
+	    </v-list-tile>
+	    <ToolBarSection
+	        	v-for="child in level.sublevels"
+	        	:key="child.id"
+	        	:level="child"
+	        	:section= level.name
+	    />
+	</v-list-group>
+	<v-list-tile
+		v-else
+        @click="clickSection()"
+        v-bind:class="{accent: activeName == activeRoute}"
+    >
+    	<v-list-tile-action>
+            <v-icon>fa fa-asterisk</v-icon>
+        </v-list-tile-action>
+    	<v-list-tile-title v-text="level.name"></v-list-tile-title>
+    	
+	</v-list-tile>
+
+</section>

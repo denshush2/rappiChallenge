@@ -1,0 +1,5 @@
+{
+  "viewDestination": "./src/views/",
+  "componentDestination": "./src/components/",
+  "storeDestination": "./src/store/modules/"
+}
