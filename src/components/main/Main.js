@@ -14,7 +14,7 @@ export default {
   },
   data () {
     return {
-      toggleToolBar: true,
+      toggleToolBar: false,
       toggleCart: false
     }
   },

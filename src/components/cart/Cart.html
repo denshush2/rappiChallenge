@@ -5,13 +5,39 @@
       clipped
       app
     >
-      <v-list>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>fas fa-exchange-alt</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
+    <p>Cart</p>
+    total {{total}}
+    <!-- <p>{{$store.state.Cart.products}}</p> -->
+      <v-list two-line>
+        <template v-for="(product, index) in products">
+            <v-list-tile 
+              avatar
+              ripple
+              v-bind:key="product.id"
+              >
+              <v-list-tile-content>
+                <v-list-tile-title>{{product.name}}</v-list-tile-title>
+                <v-list-tile-action>
+                  <v-btn small flat color="error" @click="remove(product)">remove</v-btn>
+                </v-list-tile-action>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                  <v-list-tile-action-text>
+                    <v-btn small flat round @click="addToCart(product)" color="success">
+                      <v-icon>fa fa-plus</v-icon>
+                    </v-btn>
+                    {{product.inCart}}
+                    <v-btn small flat  v-bind:disabled="product.inCart ==1" round @click="removeOne(product)" color="success">
+                      <v-icon>fa fa-minus</v-icon>
+                    </v-btn>
+                  </v-list-tile-action-text>
+                  <v-list-tile-action-text>
+                    {{product.price}}
+                  </v-list-tile-action-text>
+                </v-list-tile-action>
+            </v-list-tile>
+        </template>
       </v-list>
+      <v-btn class="Cart-pay-button" v-bind:disabled="total == 0" block color="success">Pay</v-btn>
     </v-navigation-drawer>
 </section>

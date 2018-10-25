@@ -4,13 +4,15 @@ import Vuex from 'vuex'
 //Import Modules
 import Menu from './modules/menu'
 import Products from './modules/products'
+import Cart from './modules/cart'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	modules:{
 		Menu,
-    Products
+    Products,
+    Cart
 	},
 	//Initial store for app
   	state: {

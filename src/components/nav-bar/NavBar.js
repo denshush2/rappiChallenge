@@ -18,10 +18,12 @@ export default {
     }
   },
   computed: {
-
+    totalInCart(){
+      return this.$store.state.Cart.products.length
+    }
   },
   mounted () {
-
+    
   },
   methods: {
     toggleToolBarSwitch(){

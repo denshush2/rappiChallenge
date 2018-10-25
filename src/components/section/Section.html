@@ -1,4 +1,21 @@
 <section class="Section">
   <h1>{{$route.params.levelName}}</h1>
-  	<h1>{{$store.state.Menu.searchedMenu}}</h1>
+  	<!-- <h1>{{$store.state.Menu.currentProducts}}</h1> -->
+  <v-container fluid grid-list-md text-sm-center>
+    <v-layout row wrap text-sm-center>
+      <v-flex xs12 sm3 v-for="product in $store.state.Menu.currentProducts" v-if="product.available" :key="product.id">
+	      <v-card>
+	        <v-card-title primary-title text-center>
+	          <h3>{{product.name}}</h3>
+	        </v-card-title>
+	        <v-card-text>
+	          <p>{{product.price}}</p>
+	        </v-card-text>
+	        <v-card-actions>
+	          <v-btn block color="success" @click="addToCart(product)">add</v-btn>
+	        </v-card-actions>
+	      </v-card>
+	    </v-flex>
+    </v-layout>
+  </v-container>
 </section>

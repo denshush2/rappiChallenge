@@ -1,5 +1,6 @@
 import '@babel/polyfill'
 import Vue from 'vue'
+import VueLocalStorage from 'vue-localstorage'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
@@ -11,6 +12,7 @@ import store from './store/'
 
 
 Vue.config.productionTip = false
+Vue.use(VueLocalStorage)
 
 new Vue({
   router,

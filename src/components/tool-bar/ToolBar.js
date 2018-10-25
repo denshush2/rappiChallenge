@@ -5,30 +5,27 @@ export default {
   components: {
     ToolBarSection
   },
-  props:{
-    toggleToolBar: Boolean
-  }
-  ,
-  beforeMount(){
-    this.menu = this.$store.getters.getMenu
-    console.log(this.$store)
+  props:[
+    'toggleToolBar'
+  ],
+  async beforeMount(){
+    this.menu = await this.$store.dispatch('loadMenu')
   },
   data () {
     return {
-      menu:[],
-      // menuHtml:``
+      menu:[]
     }
   },
   computed: {
   },
   mounted () {
     // this.drawMenu()
-    console.log('menu', this.menu)
+    // console.log('menu', this.menu)
   },
 
   methods: {
     clickSection(category){
-      name = category.name.replace(/ /g,"-").toLowerCase()
+      let name = category.name.replace(/ /g,"-").toLowerCase()
       this.$router.push({name:'Section', params: {levelName: name, level: category}})
     }
   }

@@ -1,28 +1,10 @@
-<section class="ToolBarSection">
-	<v-list-group
-		v-if="level.sublevels"
-	    sub-group
-	>
-		<v-list-tile slot="activator" @click="clickSection()">
-	      	<v-list-tile-title>{{level.name}}</v-list-tile-title>
-	    </v-list-tile>
-	    <ToolBarSection
-	        	v-for="child in level.sublevels"
-	        	:key="child.id"
-	        	:level="child"
-	        	:section= level.name
-	    />
-	</v-list-group>
-	<v-list-tile
-		v-else
-        @click="clickSection()"
-        v-bind:class="{accent: activeName == activeRoute}"
-    >
-    	<v-list-tile-action>
-            <v-icon>fa fa-asterisk</v-icon>
-        </v-list-tile-action>
-    	<v-list-tile-title v-text="level.name"></v-list-tile-title>
-    	
-	</v-list-tile>
-
-</section>
+<ul class="ToolBarSection">
+	<li class="ToolBarSection-item" v-bind:class="{'ToolBarSection-hidden':section.isActive}" @click="toggle(section, index)" v-for="(section, index) in menu" :key="section.id">
+		<router-link :to="{name:'Section', params: {levelName: section.name.replace(/ /g,'-').toLowerCase(), id: section.id}}">
+			<h4>{{section.name}}</h4>
+		</router-link>
+		<div v-if="section.sublevels">
+			<ToolBarSection :menu="section.sublevels"/>
+		</div>
+	</li>
+</ul>

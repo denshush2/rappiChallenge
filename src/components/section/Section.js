@@ -3,7 +3,7 @@ export default {
   components: {},
   props: [],
   beforeMount(){
-    this.$store.dispatch('orderProducts')
+    // this.$store.dispatch('orderProducts')
   },
   data () {
     return {
@@ -12,11 +12,15 @@ export default {
   },
   watch:{
     $route(val){
-      console.log('route',val.params)
+      // console.log('route',val.params)
       this.section = val.params
+      this.$store.dispatch('orderProducts', this.$route.params.id)
       // this.$store.getters.getProductsById(val.params.level.id)
       
     }
+  },
+  updated(){
+    console.log('Update', this.$route)
   },
   computed: {
 
@@ -25,6 +29,9 @@ export default {
 
   },
   methods: {
-
+    addToCart(product){
+      // console.log('Add', product)
+      this.$store.dispatch('addToCart', product)
+    }
   }
 }

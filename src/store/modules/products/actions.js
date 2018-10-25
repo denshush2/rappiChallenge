@@ -10,20 +10,20 @@ export default {
 
 	},
 	searchInSublevel({rootState, dispatch, state}, {id, menu = rootState.Menu.categories}){
-		console.log('Search In sublevel', menu)
+		// console.log('Search In sublevel', menu)
 		menu.map((section)=>{
 			
 			if (section.id == id) {
-				console.log('Menu', section)
+				// console.log('Menu', section)
 				// dispatch('searchInSublevel', id)
 			}
 			else{
 				if (section.sublevels) {
-					console.log('it has sublevels in', section.name)
+					// console.log('it has sublevels in', section.name)
 					dispatch('searchInSublevel', {id: id, menu: section.sublevels})
 				}
 				else{
-					console.log('no more sublevels in', section.name)
+					// console.log('no more sublevels in', section.name)
 				}
 			}
 		})

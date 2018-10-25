@@ -2,32 +2,40 @@ export default {
   name: 'ToolBarSection',
   components: {},
   props: {
-    level: Object,
-    section: String
+    menu: Array,
+    // menu: String
   },
   beforeMount(){
-    console.log('SECTION', this.section)
   },
   data () {
     return {
-      activeRoute: this.$router.currentRoute.params.levelName,
-      activeName: this.level.name.replace(/ /g,"-").toLowerCase()
+      active: false
+      // activeRoute: this.$router.currentRoute.params.levelName,
+      // activeName: this.level.name.replace(/ /g,"-").toLowerCase()
     }
   },
   computed: {
+    hasSublevels(){
+      return this.menu.sublevels && this.menu.sublevels.length
+    }
   },
   mounted () {
-    console.log()
+    // console.log()
   },
   methods: {
-    clickSection(){
-      console.log('NAME', this)
-      name = this.level.name.replace(/ /g,"-").toLowerCase()
-      this.$router.push({name:'Section', params: {levelName: name, level: this.level}})
-    },
-    selectMenu(){
-      console.log('select menu')
+    toggle(){
+      if(this.hasSublevels){
+        // Vue.set(this.menu, 'ToolBarSection',[])
+      }
     }
+    // clickSection(){
+    //   console.log('NAME', this)
+    //   name = this.level.name.replace(/ /g,"-").toLowerCase()
+    //   this.$router.push({name:'Section', params: {levelName: name, level: this.level}})
+    // },
+    // selectMenu(){
+    //   console.log('select menu')
+    // }
 
   }
 }
