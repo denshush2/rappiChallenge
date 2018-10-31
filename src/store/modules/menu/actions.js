@@ -15,25 +15,25 @@ export default {
 			idsInSearch = await dispatch('getProductsByCategory', {category: categories.categories[i].sublevels, id:id})
 			ids.push(...idsInSearch)
 		}
-		console.log('IDS', ids)
+		// console.log('IDS', ids)
 		await dispatch('searchProductsByIds',{products: products.products, ids: ids})
 	},
 	async searchProductsByIds({commit},{products: products,ids: ids}){
 		let searchedProducts = []
-		console.log('SEARCH', ids)
+		// console.log('SEARCH', ids)
 		for (var i = 0; i < ids.length; i++) {
 			for (var p = 0; p < products.length; p++) {
 				if (products[p].sublevel_id == ids[i]) {
 					commit('setToCurrentProducts', products[p])
-					console.log('ADD', products[p])
+					// console.log('ADD', products[p])
 				}
 			}
-			console.log('ID FINNISHED')
+			// console.log('ID FINNISHED')
 		}
 	},
 	async getProductsByCategory({dispatch,commit}, {category: category, id:id, idFounded = false, ids=[]}){
-		console.log('Category', category, idFounded)
-		console.log('asd', id, idFounded)
+		// console.log('Category', category, idFounded)
+		// console.log('asd', id, idFounded)
 		for (var i = 0; i < category.length; i++) {
 			if(idFounded == true){
 				console.log('FOUNDED X2', ids)
@@ -41,17 +41,17 @@ export default {
 			}
 			if(category[i].id == id){
 				idFounded = true
-				console.log('FOUNDED', ids)
+				// console.log('FOUNDED', ids)
 			}
-			console.log('sublevel', category[i].id)
+			// console.log('sublevel', category[i].id)
 			if(category[i].sublevels){
 				dispatch('getProductsByCategory', {category:category[i].sublevels, id:id, idFounded:idFounded, ids:ids})
 			}
 			else{
-				console.log('no hay sublevels', ids)
+				// console.log('no hay sublevels', ids)
 			}
 		}
-		console.log('IIIDDDSSS', ids)
+		// console.log('IIIDDDSSS', ids)
 		return ids
 		// if (category.sublevels) {
 		// 	for (var i = 0; i < category.sublevels.length; i++) {
@@ -119,5 +119,17 @@ export default {
 				// console.log('Sublevel ', rootState.Products.products[i].name)
 			}
 		}
+	},
+	async sortBy({state}, params){
+		let products = state.currentProducts
+		console.log('params', params, state.currentProducts)
+		for (var i = 0; i < products.length; i++) {
+			if(params.available != products[i].available){
+				products.splice(i,1)
+				console.log('Available',products[i])
+			}
+		}
+		console.log('current Products', state.currentProducts)
+		return products
 	}
 };

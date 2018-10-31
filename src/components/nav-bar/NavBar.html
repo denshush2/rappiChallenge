@@ -6,19 +6,27 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-text-field
         hide-details
-        prepend-icon="fa fa-search"
+        append-icon="fa fa-search"
         single-line
         style="margin-left: 10%"
       ></v-text-field>
+      <v-dialog
+        v-model="filter"
+        width="500"
+        >
+        <v-btn
+          slot="activator"
+        >
+          Add filters
+        </v-btn>
+        <v-card>
+          asdasdsad
+        </v-card>
+      </v-dialog>
       <v-spacer></v-spacer>
-      <!-- <input -->
      <v-badge left color="accent" >
        <span slot="badge">{{totalInCart}}</span> <!--slot can be any component-->
        <v-icon large color="alert" @click.stop="toggleCartSwitch">fa fa-shopping-cart</v-icon>
      </v-badge>
     </v-toolbar>
 </section>
-<!-- 
- <v-btn icon @click.stop="toggleCartSwitch">
-        <v-icon>fa fa-shopping-cart</v-icon>
-      </v-btn> -->

@@ -1,9 +1,22 @@
 <section class="Section">
-  <h1>{{$route.params.levelName}}</h1>
+  <h1 class="title"> Menu: {{$route.params.levelName}}</h1>
   	<!-- <h1>{{$store.state.Menu.currentProducts}}</h1> -->
+  	<v-radio-group v-model="filters.price">
+  		<v-radio
+  			v-for="o in filters.priceOptions"
+  			:key="o.id"
+  			:label="o.name"
+  			:value="o.id"
+  		></v-radio>
+  	</v-radio-group>
+  	<v-checkbox
+      :label="`Available`"
+      v-model="filters.available"
+    ></v-checkbox>
+ 
   <v-container fluid grid-list-md text-sm-center>
     <v-layout row wrap text-sm-center>
-      <v-flex xs12 sm3 v-for="product in $store.state.Menu.currentProducts" v-if="product.available" :key="product.id">
+      <v-flex xs12 sm3 v-for="product in products" :key="product.id">
 	      <v-card>
 	        <v-card-title primary-title text-center>
 	          <h3>{{product.name}}</h3>

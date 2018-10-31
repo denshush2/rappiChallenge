@@ -15,6 +15,7 @@ export default {
   data () {
     return {
       title: this.$store.state.storeName,
+      filter: false
     }
   },
   computed: {
